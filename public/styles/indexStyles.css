@@ -122,3 +122,38 @@ body {
         max-width: none; /* Remove max-width restriction */
     }
 }
+
+
+
+/** Dad updates 1-9-24 **/
+header {
+    flex-direction: column;
+    padding-top: 30px
+}
+
+.name {
+    font-size: 25px;
+    text-transform: uppercase;
+    text-align: center
+}
+
+.name span {
+    font-size: .7em;
+    display: block
+}
+
+.navbar-nav {
+    flex-direction: row;
+    gap: 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+    align-items: center
+}
+
+.photo img {
+    cursor: pointer
+}
+
+.photo img:hover {
+    transform: scale(1.05)
+}

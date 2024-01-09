@@ -1,41 +1,48 @@
 body {
     font-family: 'Baskerville', serif;
-    background-color: #f7f9fc;  /* Light grayish-blue background */
+    background-color: #f7f9fc;
+    /* Light grayish-blue background */
     margin: 0;
 
     padding: 0;
 }
 
 a {
-    text-decoration: none; /* Removes the underline */
-    color: inherit; /* The link color will be the same as the text color it's within */
+    text-decoration: none;
+    /* Removes the underline */
+    color: inherit;
+    /* The link color will be the same as the text color it's within */
 }
 
 /* If you want to specify a different color for links */
 a {
-    text-decoration: none; /* Removes the underline */
-    color: #000000; /* Replace with your desired color, here it's set to black */
+    text-decoration: none;
+    /* Removes the underline */
+    color: #000000;
+    /* Replace with your desired color, here it's set to black */
 }
 
 
-body{
+body {
     background-color: #181A18;
     color: white;
-    
-  }
-  
-body:before{
+
+}
+
+body:before {
     background: none;
 }
 
 
 .photo {
-    flex: 1 0 calc(25% - 16px); /* Four photos per row with a gap of 16px */
+    flex: 1 0 calc(25% - 16px);
+    /* Four photos per row with a gap of 16px */
     margin-bottom: 16px;
     overflow: hidden;
     border-radius: 8px;
-   
-    max-width: 23%; /* Set the max width for photos to 23% to account for the gap and keep 4 photos in a row */
+
+    max-width: 23%;
+    /* Set the max width for photos to 23% to account for the gap and keep 4 photos in a row */
     transition: transform 0.3s ease-in-out;
     max-width: 20%;
 }
@@ -49,18 +56,20 @@ body:before{
 }
 
 .photo:hover {
-    transform: scale(1.8);  /* Use the transform property to scale the element */
+    transform: scale(1.8);
+    /* Use the transform property to scale the element */
 }
 
 .portfolio {
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
-    justify-content: space-between; /* Adjusts photos to take the available space */
+    justify-content: space-between;
+    /* Adjusts photos to take the available space */
     margin: 50px auto;
     max-width: 1200px;
     padding: 20px;
-    background-color: #c0c0c0; 
+    background-color: #c0c0c0;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -68,15 +77,15 @@ body:before{
 
 .container {
     max-width: 1200px;
-    margin: 0 auto; 
+    margin: 0 auto;
     background-color: #282b28;
-    
+
 }
 
 .portfolio img {
-    max-width: 100%; 
+    max-width: 100%;
     height: auto;
-    margin: 10px 10px; 
+    margin: 10px 10px;
 }
 
 
@@ -84,15 +93,20 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #181A18; /* Primary blue color for header */
-    color: #ffffff; /* White text color for header */
+    background-color: #181A18;
+    /* Primary blue color for header */
+    color: #ffffff;
+    /* White text color for header */
     padding: 10px 20px;
     margin-bottom: 10px;
 
 }
 
 
-header h1, header h2, .about-section h1, nav .active{
+header h1,
+header h2,
+.about-section h1,
+nav .active {
     font-family: 'Oswald', sans-serif;
     margin: 0;
     color: white;
@@ -148,15 +162,17 @@ button:hover {
     background-color: #7c7c7c;
 }
 
-nav{
+nav {
     display: flex;
     align-items: center;
 }
+
 nav a {
     margin-left: 20px;
     margin-right: 30px;
     text-decoration: none;
-    color: #ffffff;  /* White text color for nav links */
+    color: #ffffff;
+    /* White text color for nav links */
     font-family: 'Oswald', sans-serif;
     transition: 0.3s ease;
     font-size: large;
@@ -165,14 +181,17 @@ nav a {
 }
 
 nav a:hover {
-    color: #1a456a; /* Darker blue on hover */
+    color: #1a456a;
+    /* Darker blue on hover */
 
 }
 
 button {
     padding: 10px 15px;
-    background-color: #2a6fbb;  /* Primary blue color for buttons */
-    color: #ffffff; /* White text color for buttons */
+    background-color: #2a6fbb;
+    /* Primary blue color for buttons */
+    color: #ffffff;
+    /* White text color for buttons */
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -181,7 +200,8 @@ button {
 }
 
 button:hover {
-    background-color: #1a456a; /* Darker blue on hover */
+    background-color: #1a456a;
+    /* Darker blue on hover */
 }
 
 .about-section {
@@ -207,11 +227,44 @@ button:hover {
     font-family: Oswald;
 }
 
-.footer{
+.footer {
     text-align: center;
 }
 
-.instagram-icon{
+.instagram-icon {
     height: 30px;
     width: auto;
+}
+
+/** Dad updates 1-9-24 **/
+header {
+    flex-direction: column;
+    padding-top: 30px
+}
+
+.name {
+    font-size: 25px;
+    text-transform: uppercase;
+    text-align: center
+}
+
+.name span {
+    font-size: .7em;
+    display: block
+}
+
+.navbar-nav {
+    flex-direction: row;
+    gap: 10px;
+    font-size: 14px;
+    text-transform: uppercase;
+    align-items: center
+}
+
+.photo img {
+    cursor: pointer
+}
+
+.photo img:hover {
+    transform: scale(1.05)
 }
