@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mason R</title>
+    <link rel="icon" href="/images/logo.png" type="image/png" sizes="32x32">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- Custom CSS and Fonts -->
+    <link rel="stylesheet" href="/styles/indexStyles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation-name: fadeIn;
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1 class="name">Mason Rauschkolb <pre></pre> Photography</h1>
+            
+            <nav class="navbar navbar-light">
+                <a class="nav-link" href="https://www.instagram.com/mason.rauschkolb/" target="_blank" title="Instagram">
+                    <img src="/images/instagram.png" alt="Instagram" style="height: 30px; width: auto; display: inline-block;">
+                </a>
+                
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Me</a>
+                    </li>
+                </ul>
+            </nav>
+            
+        </header>
+    </div>
+
+    <div class="portfolio container">
+       <div class="row" id="gallery"></div>
+    </div>
+
+    <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
+    </div>
+    <script>
+        fetch('/get-images')
+        .then(response => response.json())
+        .then(images => {
+            const gallery = document.getElementById('gallery');
+            const numberOfImagesToShow = 30; // Number of images to display
+    
+            // Setup IntersectionObserver
+            const options = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1  // Trigger when at least 10% of the image is visible
+            };
+    
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
+    
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+                }
+            }
+    
+            // Shuffle the images array and then slice it to get only desired amount of images
+            shuffleArray(images);
+            const selectedImages = images.slice(0, numberOfImagesToShow);
+    
+            selectedImages.forEach(image => {
+                const div = document.createElement('div');
+                div.classList.add('photo', 'col-4', 'col-md-3', 'mb-3');
+                const img = document.createElement('img');
+                img.src = `/images/display/${image}`;
+                img.classList.add('img-fluid');
+                img.setAttribute('loading', 'lazy');
+                img.style.opacity = 0;
+    
+                div.appendChild(img);
+                gallery.appendChild(div);
+    
+                observer.observe(img);
+    
+                // Add click event to open modal
+                img.addEventListener('click', function() {
+                    var modal = document.getElementById("myModal");
+                    var modalImg = document.getElementById("img01");
+                    var captionText = document.getElementById("caption");
+                    modal.style.display = "flex";
+                    modalImg.src = this.src;
+
+                    // Add event listener to close modal when clicking outside the image
+                    window.onclick = function(event) {
+                        if (event.target === modal) {
+                            modal.style.display = "none";
+                        }
+                    }
+                });
+            });
+            
+            // Close the modal
+            // Modify existing close button functionality
+            var span = document.getElementsByClassName("close")[0];
+            span.onclick = function() {
+                var modal = document.getElementById("myModal");
+                modal.style.display = "none";
+            }
+        })
+        .catch(err => {
+            console.error('Failed to fetch images:', err);
+        });
+    </script>
+    
+    <div class="footer text-center py-3">
+        <p>Copyright 2023&copy; Mason Rauschkolb</p>
+    </div>
+
+    <!-- Bootstrap JS (Optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+
+</html>

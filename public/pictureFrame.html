@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Photo Frame</title>
+    <link rel="icon" href="/images/logo.png" type="image/png" sizes="32x32">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        .fullscreen-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: background-image 1s ease-in-out;
+            opacity: 0; /* Start with the image invisible */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation-name: fadeIn;
+            animation-duration: 1s;
+            animation-fill-mode: forwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="fullscreen-image"></div>
+    <script>
+        console.log("Script started");
+
+        fetch('/get-images')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(images => {
+            console.log("Images fetched", images);
+            if (images.length === 0) {
+                throw new Error('No images returned from the server');
+            }
+
+            const imageDiv = document.querySelector('.fullscreen-image');
+            
+            function preloadImage(src, callback) {
+                let img = new Image();
+                img.onload = function() { callback(true); };
+                img.onerror = function() { callback(false); };
+                img.src = src;
+            }
+
+            function displayRandomImage() {
+                let randomIndex = Math.floor(Math.random() * images.length);
+                let imageUrl = images[randomIndex];
+                
+                preloadImage(imageUrl, function(success) {
+                    if (success) {
+                        imageDiv.style.backgroundImage = 'url(' + imageUrl + ')';
+                        imageDiv.classList.remove('fade-in');
+                        void imageDiv.offsetWidth; // Trigger reflow to restart animation
+                        imageDiv.classList.add('fade-in');
+                    } else {
+                        console.error('Failed to preload image:', imageUrl);
+                        // Optionally remove the faulty image from the array to prevent future attempts
+                        images.splice(randomIndex, 1);
+                    }
+                });
+            }
+            setInterval(displayRandomImage, 5000); // Change image every 5 seconds
+            displayRandomImage(); // Initial call to display the first image
+        })
+        .catch(err => {
+            console.error('Error:', err);
+        });
+    </script>
+</body>
+</html>

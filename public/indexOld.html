@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mason R</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            
+        <h1>Mason Rauschkolb</h1>
+        <h2>Photography</h2>
+        <nav>
+            <a href="contact.html">Contact</a>
+            <a href="about.html">About Me</a>
+        </nav>
+    </header>
+    </div>
+
+    <div class="portfolio" id="gallery">
+        <!-- Images will be appended here using JavaScript -->
+        
+        
+    </div>
+    <script>
+        fetch('/get-images')
+        .then(response => response.json())
+        .then(images => {
+            const gallery = document.getElementById('gallery'); // Get the gallery div
+            images.forEach(image => {
+                const div = document.createElement('div');
+                div.classList.add('photo');
+    
+                const img = document.createElement('img');
+                img.src = `/images/display/${image}`;
+    
+                div.appendChild(img);
+                gallery.appendChild(div); // Append the div (with image inside) to the gallery
+            });
+        })
+        .catch(err => {
+            console.error('Failed to fetch images:', err);
+        });
+    </script>
+    <div class="footer">
+        <p>Copyright 2023© Mason Rauschkolb</p>
+    </div>
+</body>
+</html>
