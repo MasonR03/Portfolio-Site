@@ -47,41 +47,11 @@
         </header>
         <div class="header" style="padding: 30px;">
             <h1 style="font-family: Oswald;">Contact Me</h1>
-            <p style="font-family: Oswald;">Please fill out the form below and I'll get back to you as soon as possible.</p>
+            <p style="font-family: Oswald; font-size: large;">Send me a message on Instagram or by Email!</p>
+            <p style="font-size: large;"><a style="text-decoration: none; color: inherit;" href="mailto:contact.mason.photo@gmail.com">contact.mason.photo@gmail.com</a></p>
         </div>
-
-        <form id="contactForm" action="/submit-message" method="POST">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-
-            <button type="submit" style="margin: 20px;">Send Message</button>
-        </form>
-        <div id="formResponse"></div>
-        <script>
-            $(document).ready(function() {
-                $("#contactForm").submit(function(event) {
-                    event.preventDefault(); // prevent the form from refreshing the page
         
-                    $.ajax({
-                        type: 'POST',
-                        url: '/submit-message',
-                        data: $(this).serialize(),
-                        success: function(response) {
-                            $("#formResponse").text(response).css('color', 'green');
-                        },
-                        error: function(error) {
-                            $("#formResponse").text("An error occurred. Please try again later.").css('color', 'red');
-                        }
-                    });
-                });
-            });
-        </script>
+
         
     </div>
 </body>

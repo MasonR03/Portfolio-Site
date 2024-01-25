@@ -29,6 +29,8 @@ body {
 
 }
 
+
+
 body:before {
     background: none;
 }
@@ -170,13 +172,13 @@ nav {
 
 nav a {
     margin-left: 5px;
-    margin-right: 5px;
+    margin-right: 10px;
     text-decoration: none;
     color: #ffffff;
     /* White text color for nav links */
     font-family: 'Oswald', sans-serif;
     transition: 0.3s ease;
-    font-size: 14px;
+    font-size: 20px;
     
     
 
@@ -210,6 +212,7 @@ button:hover {
     text-align: center;
     padding: 50px 0;
     margin: 10px;
+    font-size: large;
 }
 
 .profile-pic {
@@ -245,7 +248,7 @@ header {
 }
 
 .name {
-    font-size: 25px;
+    font-size: 30px;
     text-transform: uppercase;
     text-align: center
 }
@@ -257,8 +260,8 @@ header {
 
 .navbar-nav {
     flex-direction: row;
-    gap: 10px;
-    font-size: 14px;
+    
+    font-size: 20px;
     text-transform: uppercase;
     align-items: center;
     list-style-type: none;
