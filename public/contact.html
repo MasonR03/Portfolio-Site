@@ -18,55 +18,40 @@
 <body>
     <div class="container">
         <header>
-            <a href="index.html"><h1>Mason Rauschkolb<br> Photography</h1></a>
+            <a href="index.html"><h1 class="name">Mason Rauschkolb <span>Photography</span></h1></a>
 
-            <nav>
+            <nav class="navbar navbar-light">
                 
-                <!-- <a href="index.html">Home</a><pre></pre> -->
-                <a href="about.html">About Me</a>
-                <a class="nav-link" href="https://www.instagram.com/mason.rauschkolb/" target="_blank" title="Instagram" style="margin-left:auto;">
-                    <img src="/images/instagram.png" alt="Instagram" style="height: 30px; width: auto;">
-                </a>
+                <ul class="navbar-nav">
+                    
+                    
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Me</a>
+                    </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://www.instagram.com/mason.rauschkolb/" target="_blank" title="Instagram">
+                            <img src="/images/instagram.png" alt="Instagram" style="height: 30px; width: auto; display: inline-block;">
+                        </a>
+                    </li>
+                    
+                   
+                </ul>
             </nav>
+
         </header>
         <div class="header" style="padding: 30px;">
             <h1 style="font-family: Oswald;">Contact Me</h1>
-            <p style="font-family: Oswald;">Please fill out the form below and I'll get back to you as soon as possible.</p>
+            <p style="font-family: Oswald; font-size: large;">Send me a message on Instagram or by Email!</p>
+            <p style="font-size: large;"><a style="text-decoration: none; color: inherit;" href="mailto:contact.mason.photo@gmail.com">contact.mason.photo@gmail.com</a></p>
         </div>
-
-        <form id="contactForm" action="/submit-message" method="POST">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required></textarea>
-
-            <button type="submit" style="margin: 20px;">Send Message</button>
-        </form>
-        <div id="formResponse"></div>
-        <script>
-            $(document).ready(function() {
-                $("#contactForm").submit(function(event) {
-                    event.preventDefault(); // prevent the form from refreshing the page
         
-                    $.ajax({
-                        type: 'POST',
-                        url: '/submit-message',
-                        data: $(this).serialize(),
-                        success: function(response) {
-                            $("#formResponse").text(response).css('color', 'green');
-                        },
-                        error: function(error) {
-                            $("#formResponse").text("An error occurred. Please try again later.").css('color', 'red');
-                        }
-                    });
-                });
-            });
-        </script>
+
         
     </div>
 </body>

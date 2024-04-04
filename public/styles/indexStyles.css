@@ -29,7 +29,7 @@ header {
     padding: 10px 20px;
     margin-bottom: 20px;
 
-    font-size: large;
+    font-size: 20px;
 }
 
 body {
@@ -121,4 +121,39 @@ body {
         width: 90%; /* Take up more width on smaller screens */
         max-width: none; /* Remove max-width restriction */
     }
+}
+
+
+
+/** Dad updates 1-9-24 **/
+header {
+    flex-direction: column;
+    padding-top: 30px
+}
+
+.name {
+    font-size: 30px;
+    text-transform: uppercase;
+    text-align: center
+}
+
+.name span {
+    font-size: .7em;
+    display: block
+}
+
+.navbar-nav {
+    flex-direction: row;
+    gap: 10px;
+    font-size: 20px;
+    text-transform: uppercase;
+    align-items: center
+}
+
+.photo img {
+    cursor: pointer
+}
+
+.photo img:hover {
+    transform: scale(1.05)
 }
