@@ -30,6 +30,31 @@ const getFilesRecursive = (directory) => {
     return results;
 };
 
+// Endpoint to get the view count
+app.get('/view-count', (req, res) => {
+    const filePath = path.join(__dirname, 'views.txt');
+
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+            if (err.code === 'ENOENT') {
+                fs.writeFile(filePath, '1', (err) => {
+                    if (err) throw err;
+                    res.send('1');
+                });
+            } else {
+                res.status(500).send('Server error');
+            }
+        } else {
+            const count = parseInt(data, 10) + 1;
+            fs.writeFile(filePath, count.toString(), (err) => {
+                if (err) throw err;
+                res.send(count.toString());
+            });
+        }
+    });
+});
+
+
 app.get('/get-images', (req, res) => {
     try {
         const imageFiles = getFilesRecursive(DISPLAY_IMAGES_DIR);
