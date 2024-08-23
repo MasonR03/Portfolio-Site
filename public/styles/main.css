@@ -26,7 +26,7 @@ a {
 body {
     background-color: #181A18;
     color: white;
-
+    text-align: center;
 }
 
 
@@ -93,14 +93,16 @@ body:before {
 
 header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     background-color: #181A18;
     /* Primary blue color for header */
     color: #ffffff;
     /* White text color for header */
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
     margin-bottom: 10px;
+    width: 100%; /* Ensure it takes the full width */
+    margin: 0 auto; /* Auto margin for horizontal centering */
 
 }
 
@@ -259,14 +261,21 @@ header {
 }
 
 .navbar-nav {
+    display: flex;
     flex-direction: row;
-    
-    font-size: 20px;
-    text-transform: uppercase;
+    justify-content: center;
     align-items: center;
+    width: 100%;
+    padding: 0;
+    margin: 0;
     list-style-type: none;
-    flex-direction: row;
 }
+
+.nav-item {
+    margin: 15px 10px;  /* Adds some space between the items */
+}
+
+
 
 .photo img {
     cursor: pointer
