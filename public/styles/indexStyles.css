@@ -128,13 +128,15 @@ body {
 /** Dad updates 1-9-24 **/
 header {
     flex-direction: column;
-    padding-top: 30px
+    padding-top: 30px;
+    
 }
 
 .name {
     font-size: 30px;
     text-transform: uppercase;
-    text-align: center
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 .name span {
@@ -144,7 +146,7 @@ header {
 
 .navbar-nav {
     flex-direction: row;
-    gap: 10px;
+    gap: 20px;
     font-size: 20px;
     text-transform: uppercase;
     align-items: center
