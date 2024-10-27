@@ -81,7 +81,7 @@
         .then(response => response.json())
         .then(images => {
             const gallery = document.getElementById('gallery');
-            const numberOfImagesToShow = 50; // Number of images to display
+            const numberOfImagesToShow = 52; // Number of images to display
     
             // Setup IntersectionObserver
             const options = {
@@ -155,6 +155,8 @@
     </script>
     
     <div class="footer text-center py-3">
+       
+        <button onclick="window.location.reload();" class="btn btn-dark" style="margin-bottom: 30px; font-size: large;" >More Images</button>
         <p style="color: white; font-size: 24px;">Copyright 2024&copy; Mason Rauschkolb</p>
         <p style="color: white; font-size: 18px;">Site views: <span id="view-count">Loading...</span></p>
     </div>
